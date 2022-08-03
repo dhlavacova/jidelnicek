@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{{ form_start(zvetsovacForm) }}
+
+    {{ form_row(form.text) }}
+
+    {{ form_row(form.submit) }}
+
+{{ form_end(fond) }}
+
+    {# Namísto kódu výše pro výpis formuláře stačí bohatě kód níže: #}
+    {# form(zvetsovacForm) #}
+
+{{form(form)}}
