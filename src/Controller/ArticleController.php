@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\DruhJidla;
 use App\Entity\NazevJidla;
 use App\Repository\ArticleRepository;
 use App\Repository\DruhJidlaRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,21 +30,21 @@ class ArticleController extends AbstractController
         $this->articleRepository = $articleRepository;
     }
 
+    #[Route('/seznam-clanku', name: 'article_list')]
     /**
      * Načte a předá seznam všech článků do šablony.
      * @return Response HTTP odpověď
-     * @Route("/seznam-clanku", name="article_list")
      */
     public function list(): Response
     {
         return $this->render('article/list.html.twig', ['articles' => $this->articleRepository->findAll()]);
     }
 
+    #[Route('/odstranit/{url}', name: 'remove_article')]
     /**
      * Odstraní článek podle jeho URL.
      * @param string|null $url URL článku
      * @return Response HTTP odpověď
-     * @Route("/odstranit/{url}", name="remove_article")
      * @throws ORMException Jestliže nastane chyba při mazání článku.
      */
     public function remove(string $url = null): Response
@@ -56,12 +54,12 @@ class ArticleController extends AbstractController
         return $this->redirectToRoute('article_list');
     }
 
+    #[Route('/editor/{url}', name: 'article_editor')]
     /**
      * Vytváří a zpracovává formulář pro editaci článku podle jeho URL.
      * @param string|null $url     URL článku
      * @param Request     $request HTTP požadavek
      * @return Response HTTP odpověď
-     * @Route("/editor/{url}", name="article_editor")
      * @throws ORMException Jestliže nastane chyba při ukládání článku.
      */
     public function editor(Request $request, string $url = null): Response
@@ -95,19 +93,15 @@ class ArticleController extends AbstractController
         return $this->render('article/editor.html.twig', ['editorForm' => $editorForm->createView()]);
     }
 
+    #[Route('/article/{url?%default_article_url%}', name: 'article')]
     /**
      * Načte článek podle jeho URL a předá jej do šablony.
      * Pokud není zadaná URL, nastaví se jí hodnota pro výchozí článek.
      * @param Article $article článek
      * @return Response HTTP odpověď
      * @throws NotFoundHttpException Jestliže článek s danou URL nebyl nalezen.
-     * @Route("/{url?%default_article_url%}", name="article")
-     * @Entity("article", expr="repository.findOneByUrl(url)")
+     * @Entity("article", expr="reposi<tory.findOneByUrl(url)")
      */
-    /* #[Route('/article', name: 'app_article')]
-     #[Throws (NotFoundHttpException::class)]*/
-
-
     public function index($url, ArticleRepository $repo, EntityManagerInterface $em, DruhJidlaRepository $dj): Response
     {
         $druh1 = $dj->findOneBy(['id' => 1]);
