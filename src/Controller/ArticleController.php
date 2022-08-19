@@ -104,13 +104,13 @@ class ArticleController extends AbstractController
      */
     public function index($url, ArticleRepository $repo, EntityManagerInterface $em, DruhJidlaRepository $dj): Response
     {
-        $druh1 = $dj->findOneBy(['id' => 1]);
-        $jidlo = new NazevJidla();
-        $jidlo->addDruhy($druh1);
-        $jidlo->setNazev('brokolice');
-        $em->persist($jidlo); // nachystej - preklad pokracuj
-        $em->flush($jidlo); // proved
-        $article = $repo->findOneBy(['url' => $url]);
+//        $druh1 = $dj->findOneBy(['id' => 1]);
+//        $jidlo = new NazevJidla();
+//        $jidlo->addDruhy($druh1);
+//        $jidlo->setNazev('brokolice');
+//        $em->persist($jidlo); // nachystej - preklad pokracuj
+//        $em->flush($jidlo); // proved
+//        $article = $repo->findOneBy(['url' => $url]);
 
         return $this->render('article/index.html.twig', [
             'article' => $article

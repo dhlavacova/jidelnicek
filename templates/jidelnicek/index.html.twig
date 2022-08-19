@@ -1,10 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form(form) }}
+    {# app/Resources/views/default/new.html.twig #}
+<div class="container my-3 px-6">
+    {{ form_start(form) }}
+<div>
+        {{ form_errors(form) }}
+    </div>
+<div class="row">
+<div class="col -3">
+            {{ form_row(form.nazev)}}
+
+</div>
+    <div class="row ">
+<div class="col -3 "
+            {{ form_row(form.druhy) }}
+</div>
+</div>
+
+    <div class="row py-3">
+    {{ form_end(form) }}
+        </div>
+    </div>
+    </div>
+
 {% endblock body %}
 
 
-    {# Namísto kódu výše pro výpis formuláře stačí bohatě kód níže: #}
-    {# form(zvetsovacForm) #}
+
 
