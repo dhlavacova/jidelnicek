@@ -21,8 +21,8 @@ class RegistrationController extends AbstractController
         $data = [];
         $form = $this->createFormBuilder($data)
             ->add('email',TextType::class,['label'=>'Email', 'trim'=>true])
-            ->add('password', PasswordType::class,['label'=>'Zadej svuj pasword'])
-            ->add('submit', SubmitType::class, ['label' => 'Uloz'])
+            ->add('password', PasswordType::class,['label'=>'Password'])
+            ->add('submit', SubmitType::class, ['label' => 'Weiter'])
             ->getForm();
 
         $form->handleRequest($request);
