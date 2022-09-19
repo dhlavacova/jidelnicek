@@ -1,10 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {# ... #}
-
+{% block title %}Log in!{% endblock %}
 {% block body %}
-<div class="example-wrapper">
-    <h1>Login</h1>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark "
+             style="position: absolute; top:0; width:100%; opacity:0.9; color:#cf8422;">
+            <div class="container-fluid">
+                <ul class="navbar-nav ">
+                    <a class="nav-link " aria-current="page" href="{{ path('app_jidelnicek') }}">Zurück</a>
+                </ul>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav ">
+                        <a class="  navbar-brand" href="#"><img src="{{ asset('images/icons8-food-bar-100.png') }}"
+                                                                height="45"
+                                                                width="45" alt="logo">
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<div class="container-fluid">
+    <div class=" row col-12 col-md-9 col-xl-8 py-md-5 pl-md-6 bd-content">
+    <h1> Login </h1>
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -20,11 +47,14 @@
 
         {# If you want to control the URL the user is redirected to on success
         <input type="hidden" name="_target_path" value="/account"/> #}
-<div>
+<div class="row py-3">
+    <div class="col -3">
     <button class = "btn btn-primary"type="submit">Login</button>
     <a class="btn btn-danger " href="{{ path('app_registration') }}">Registration</a>
 </div>
+</div>
 
     </form>
+</div>
 </div>
 {% endblock %}
