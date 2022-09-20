@@ -5,27 +5,25 @@
 {% block body %}
     <div class="example-wrapper">
         <h1>Konto erstellen </h1>
-    <div class="container my-3 px-6">
-        {{ form_start(form) }}
-        <div>
-            {{ form_errors(form) }}
-        </div>
-        <div class="row">
+        <div class="container my-3 px-6">
+            {{ form_start(form) }}
+            <div>
+                {{ form_errors(form) }}
+            </div>
+            <div class="row">
 
+                <div class="row ">
+                    <div class="col -3 "
+                    {{ form_row(form.password) }}
+                </div>
+            </div>
             <div class="row ">
                 <div class="col -3 "
-                {{ form_row(form.password) }}
+                {{ form_row(form.email) }}
             </div>
         </div>
-        <div class="row ">
-            <div class="col -3 "
-            {{ form_row(form.email) }}
-        </div>
-    </div>
         <div class="row py-3">
             {{ form_end(form) }}
         </div>
-    </div>
-    </div>
     </div>
 {% endblock %}
