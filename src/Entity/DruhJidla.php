@@ -19,7 +19,7 @@ class DruhJidla
     private Collection $jidla;
 
     #[ORM\Column(length: 255)]
-    private ?string $nazev = null;
+    private ?string $kategorie = null;
 
     public function __construct()
     {
@@ -43,7 +43,7 @@ class DruhJidla
     {
         if (!$this->jidla->contains($jidla)) {
             $this->jidla[] = $jidla;
-            $jidla->addDruhy($this);
+            $jidla->addKategorie($this);
         }
 
         return $this;
@@ -52,20 +52,20 @@ class DruhJidla
     public function removeJidla(NazevJidla $jidla): self
     {
         if ($this->jidla->removeElement($jidla)) {
-            $jidla->removeDruhy($this);
+            $jidla->removeKategorie($this);
         }
 
         return $this;
     }
 
-    public function getNazev(): ?string
+    public function getKategorie(): ?string
     {
-        return $this->nazev;
+        return $this->kategorie;
     }
 
-    public function setNazev(string $nazev): self
+    public function setKategorie(string $kategorie): self
     {
-        $this->nazev = $nazev;
+        $this->kategorie = $kategorie;
 
         return $this;
     }

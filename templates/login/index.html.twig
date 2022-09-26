@@ -7,14 +7,15 @@
 
 
 
-        {% if error %}
-            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
 
 
-        <div class="container py-sm-3 my-3 border col-md-4">
+
+        <div class="container py-sm-3 my-3 border col-md-4 text">
             <h3> Einloggen </h3>
             <div class="mb-3">
+                {% if error %}
+                    <div class="alert alert-danger">⚠ ️{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
                 <form action="{{ path('app_login') }}" method="post">
                     <label for="username">Email:</label>
                     <div class="mp-3 my-3 mt-1">

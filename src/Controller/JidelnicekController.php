@@ -7,6 +7,7 @@ use App\Entity\NazevJidla;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,9 +22,9 @@ class JidelnicekController extends AbstractController
         $jidlo = new NazevJidla();
 
         $form = $this->createFormBuilder($jidlo)
-            ->add('nazev', TextType::class, ['label' => 'Nazev noveho receptu: ', 'trim'=>true])
-            ->add('druhy', EntityType::class, ['class' => DruhJidla::class, 'choice_label' => 'nazev','mapped' => false, 'multiple' => true])
-            ->add('submit', SubmitType::class, ['label' => 'Uloz'])
+            ->add('nazev', TextType::class, ['label' => 'Rezeptname ', 'trim'=>true])
+            ->add('kategorie', EntityType::class, ['class' => DruhJidla::class, 'choice_label' => 'kategorie','mapped' => false, 'multiple' => true])
+            ->add('submit', SubmitType::class, ['label' => 'Speichern'])
             ->getForm();
         // Zpracování editačního formuláře.
         $form->handleRequest($request);

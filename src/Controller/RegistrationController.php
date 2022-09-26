@@ -43,7 +43,7 @@ class RegistrationController extends AbstractController
             $em->flush($user);
             $this->addFlash("success", "Uzivatel byl pridan");
 
-            return $this->redirectToRoute('app_tydenni_jidelnicek');
+            return $this->redirectToRoute('app_login');
         }
         return $this->renderForm('registration/index.html.twig', [
             'controller_name' => 'RegistrationController',

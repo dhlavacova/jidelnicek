@@ -23,11 +23,11 @@ class TydenniJidelnicekController extends AbstractController
 
 
         $form = $this->createFormBuilder($vybraneJidlo)
-            ->add('pondeli', EntityType::class,
+            ->add('montag', EntityType::class,
                 [
                     'class' => NazevJidla::class,
                     'choice_label' => 'nazev',
-                    'label' => 'snidane',
+                    'label' => 'Frühstück',
                     'mapped' => false,
                     'multiple' => false,
                     'expanded' => false,
@@ -39,7 +39,7 @@ class TydenniJidelnicekController extends AbstractController
                 [
                     'class' => NazevJidla::class,
                     'choice_label' => 'nazev',
-                    'label' => 'svacina',
+                    'label' => 'Snack',
                     'mapped' => false,
                     'multiple' => false,
                     'expanded' => false,
@@ -50,7 +50,7 @@ class TydenniJidelnicekController extends AbstractController
                 [
                     'class' => NazevJidla::class,
                     'choice_label' => 'nazev',
-                    'label' => 'obed',
+                    'label' => 'Mittagessen',
                     'mapped' => false,
                     'multiple' => false,
                     'expanded' => false,
@@ -61,7 +61,7 @@ class TydenniJidelnicekController extends AbstractController
                 [
                     'class' => NazevJidla::class,
                     'choice_label' => 'nazev',
-                    'label' => 'vecere',
+                    'label' => 'Abendsbrot',
                     'mapped' => false,
                     'multiple' => false,
                     'expanded' => false,
@@ -79,17 +79,17 @@ class TydenniJidelnicekController extends AbstractController
 //                    'placeholder' => '',
 //                ]
 //            )
-            ->add('submit', SubmitType::class, ['label' => 'Uloz'])
+            ->add('submit', SubmitType::class, ['label' => 'Speichern'])
             ->getForm();
 
 
-        $pondeli = date('d.m.Y', strtotime('sunday next week'));
-        $nedeli = date('d.m.Y', strtotime('sunday next week'));
+        $montag = date('d.m.Y', strtotime('sunday next week'));
+        $sonntag = date('d.m.Y', strtotime('sunday next week'));
 
         return $this->renderForm('tydenni_jidelnicek/index.html.twig', [
            'form' => $form,
-            'pondeli' => $pondeli,
-            'nedele' => $nedeli,
+            'montag' => $montag,
+            'sonntag' => $sonntag,
 
         ]);
     }
