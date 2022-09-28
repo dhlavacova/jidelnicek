@@ -23,7 +23,7 @@ class JidelnicekController extends AbstractController
 
         $form = $this->createFormBuilder($jidlo)
             ->add('nazev', TextType::class, ['label' => 'Rezeptname ', 'trim'=>true])
-            ->add('kategorie', EntityType::class, ['class' => DruhJidla::class, 'choice_label' => 'kategorie','mapped' => false, 'multiple' => true])
+            ->add('druhy', EntityType::class, ['class' => DruhJidla::class, 'choice_label' => 'kategorie','mapped' => true, 'multiple' => true])
             ->add('submit', SubmitType::class, ['label' => 'Speichern'])
             ->getForm();
         // Zpracování editačního formuláře.
@@ -31,7 +31,7 @@ class JidelnicekController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $jidlo = $form->getData();
             $em->persist($jidlo); // nachystej - preklad pokracuj
-            $em->flush($jidlo);
+            $em->flush();
             $this->addFlash('notice', 'Článek byl úspěšně uložen.');
             return $this->redirectToRoute(($request->attributes->get('_route')));
         }

@@ -43,7 +43,7 @@ class DruhJidla
     {
         if (!$this->jidla->contains($jidla)) {
             $this->jidla[] = $jidla;
-            $jidla->addKategorie($this);
+            $jidla->addDruhy($this);
         }
 
         return $this;
@@ -52,7 +52,7 @@ class DruhJidla
     public function removeJidla(NazevJidla $jidla): self
     {
         if ($this->jidla->removeElement($jidla)) {
-            $jidla->removeKategorie($this);
+            $jidla->removeDruhy($this);
         }
 
         return $this;

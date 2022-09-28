@@ -52,7 +52,7 @@ class NazevJidla
         return $this->druhy;
     }
 
-    public function addKategorie(DruhJidla $druhy): self
+    public function addDruhy(DruhJidla $druhy): self
     {
         if (!$this->druhy->contains($druhy)) {
             $this->druhy[] = $druhy;
