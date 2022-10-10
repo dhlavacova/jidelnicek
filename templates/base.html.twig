@@ -43,8 +43,12 @@
                             <a class="nav-link " href="{{ path('app_registration') }}">Registrieren</a>
                         {% endif %}
                         {% if app.user %}
-                        <a class="nav-link " aria-current="page" href="#">{{ app.user.email }}</a>
-                        <a class="nav-link " href="{{ path('app_logout') }}">Abmeldung</a>
+                        <a class="nav-link dropdown-toggle" aria-current="page" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ app.user.email }}</a>
+                        <ul class="dropdown-menu dropdown-menu-dark " aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item dunkel" href="#">Mein Konto</a></li>
+                            <li><a class="dropdown-item dunkel" href="#">Historie</a></li>
+                            <li><a class="dropdown-item dunkel" href="{{ path('app_logout') }}">Abmeldung</a></li>
+                        </ul>
                     </ul>
                 </div>
                 {% endif %}
